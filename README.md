@@ -24,7 +24,8 @@ A custom Odoo module developed to efficiently manage company equipment, handle m
 1. Clone this repository 
 ```
 git clone https://github.com/rewuq/odoo-equipment-maintenance
-cd odoo-equipment-maintenance```
+cd odoo-equipment-maintenance
+```
 2. Start the environment: 
 ```
 docker-compose up -d
