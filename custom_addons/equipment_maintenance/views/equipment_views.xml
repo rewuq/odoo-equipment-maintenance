@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_equipment_search" model="ir.ui.view">
+        <field name="name">maintenance.equipment.search</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <search string="Пошук обладнання">
+                <field name="name" string="Назва або Серійний номер" filter_domain="['|', ('name', 'ilike', self), ('serial_number', 'ilike', self)]"/>
+                <field name="category_id"/>
+                <field name="user_id"/>
+                <filter string="В експлуатації" name="in_use" domain="[('state', '=', 'in_use')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_equipment_tree" model="ir.ui.view">
+        <field name="name">maintenance.equipment.tree</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <list string="Обладнання">
+                <field name="name"/>
+                <field name="serial_number"/>
+                <field name="category_id"/>
+                <field name="user_id"/>
+                <field name="active_request_count"/>
+                <field name="state" widget="badge" decoration-success="state == 'in_use'" decoration-warning="state == 'maintenance'" decoration-danger="state == 'written_off'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_equipment_form" model="ir.ui.view">
+        <field name="name">maintenance.equipment.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="arch" type="xml">
+            <form string="Обладнання">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="in_use,maintenance,written_off"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Назва обладнання..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="serial_number"/>
+                            <field name="category_id"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="commission_date"/>
+                            <field name="active_request_count"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_maintenance_equipment" model="ir.actions.act_window">
+        <field name="name">Обладнання</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_maintenance_root" name="Equipment Maintenance" sequence="10"/>
+    
+    <menuitem id="menu_maintenance_equipment" name="Обладнання" parent="menu_maintenance_root" action="action_maintenance_equipment" sequence="10"/>
+
+</odoo>
