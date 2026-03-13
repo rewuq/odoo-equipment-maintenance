@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="equipment_maintenance.DashboardTemplate" owl="1">
+        <div class="o_dashboard_container p-4">
+            <h2 class="mb-4">Дашборд обслуговування</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-white bg-primary h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <h5 class="card-title text-uppercase fw-bold">Всього обладнання</h5>
+                            <h1 class="display-3 fw-bold mt-2 text-white">
+                                <t t-esc="state.equipmentCount"/>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card text-white bg-warning h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <h5 class="card-title text-uppercase fw-bold">Відкриті заявки</h5>
+                            <h1 class="display-3 fw-bold mt-2 text-white">
+                                <t t-esc="state.openRequestsCount"/>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card text-white bg-danger h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <h5 class="card-title text-uppercase fw-bold">Прострочені заявки</h5>
+                            <h1 class="display-3 fw-bold mt-2 text-white">
+                                <t t-esc="state.overdueRequestsCount"/>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

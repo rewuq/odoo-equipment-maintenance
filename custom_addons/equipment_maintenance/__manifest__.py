@@ -11,7 +11,14 @@
         'views/request_views.xml',
         'views/history_views.xml', 
         'views/report_views.xml',
+        'views/dashboard_views.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'equipment_maintenance/static/src/components/dashboard/dashboard.js',
+            'equipment_maintenance/static/src/components/dashboard/dashboard.xml',
+        ],
+    },
     'installable': True,
     'application': True,
 }
